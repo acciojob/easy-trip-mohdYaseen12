@@ -16,7 +16,7 @@ public class AirportRepository {
     private Map<Integer, Passenger> passengerMap = new HashMap<>(); // passId : Passenger object
     private Map<Integer, List<Integer>> ticketDB = new HashMap<>(); // ticketID : listof passengerId
 
-    public String addAirport(Airport airport) {
+    public void addAirport(Airport airport) {
             airportMap.put(airport.getAirportName(),airport);
     }
 
@@ -36,9 +36,8 @@ public class AirportRepository {
     }
 
     public void addPassenger(Passenger passenger) {
-        if(!passengerMap.containsKey(passenger.getPassengerId())){
+
             passengerMap.put(passenger.getPassengerId(),passenger);
-        }
     }
 
     public int getNumberOfPeopleOn(Date date, String airportName) {
@@ -68,6 +67,7 @@ public class AirportRepository {
                 return "FAILURE";
             }
             if(list.contains(passengerId)) return "FAILURE";
+
             list.add(passengerId);
             ticketDB.put(flightId,list);
             return "SUCCESS";

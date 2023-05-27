@@ -26,7 +26,7 @@ public class AirportService {
         int max = Integer.MIN_VALUE;
 //        String name = "";
         for(String key : map.keySet()){
-            if(map.get(key).getNoOfTerminals() > max){
+            if(map.get(key).getNoOfTerminals() >= max){
                 max = map.get(key).getNoOfTerminals();
 //                name = key;
             }
@@ -45,15 +45,14 @@ public class AirportService {
 
     public double getShortestDurationOfPossibleBetweenTwoCities(City fromCity, City toCity) {
         Map<Integer, Flight> flightMap = airportRepository.getShortestDurationOfPossibleBetweenTwoCities();
-        double minDuration = -Integer.MAX_VALUE;
+        double minDuration = -Double.MAX_VALUE;
         for(Integer key : flightMap.keySet()){
-            if(flightMap.get(key).getFromCity() == fromCity && flightMap.get(key).getToCity() == toCity
-                    && flightMap.get(key).getDuration() < minDuration){
-                minDuration =flightMap.get(key).getDuration();
+            if(flightMap.get(key).getFromCity() == fromCity && flightMap.get(key).getToCity() == toCity){
+                minDuration =Math.min(flightMap.get(key).getDuration(),minDuration);
             }
 
         }
-        return minDuration == Integer.MAX_VALUE ? -1 : minDuration;
+        return minDuration == Double.MAX_VALUE ? -1 : minDuration;
     }
 
     public void addFlight(Flight flight) {
