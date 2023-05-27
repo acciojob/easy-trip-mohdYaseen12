@@ -17,28 +17,22 @@ public class AirportRepository {
     private Map<Integer, List<Integer>> ticketDB = new HashMap<>(); // ticketID : listof passengerId
 
     public String addAirport(Airport airport) {
-        if(!airportMap.containsKey(airport.getAirportName())){
             airportMap.put(airport.getAirportName(),airport);
-            return "SUCCESS";
-        }
-        return "FAILURE";
     }
 
     public Map<String,Airport> getLargestAirportName() {
         return new HashMap<>(airportMap);
-//        int max =
+
     }
 
     public Map<Integer,Flight> getShortestDurationOfPossibleBetweenTwoCities() {
         return new HashMap<>(flightMap);
     }
 
-    public String addFlight(Flight flight) {
-        if(!flightMap.containsKey(flight.getFlightId())){
+    public void addFlight(Flight flight) {
+
             flightMap.put(flight.getFlightId(),flight);
-            return "SUCCESS";
-        }
-        else return "FAILURE";
+
     }
 
     public void addPassenger(Passenger passenger) {
