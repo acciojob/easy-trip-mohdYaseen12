@@ -17,12 +17,12 @@ public class AirportController {
     AirportService airportService;
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
-        airportService.addAirport(airport);
+        String str = airportService.addAirport(airport);
 
         //Simply add airport details to your database
         //Return a String message "SUCCESS"
 
-        return "SUCCESS";
+        return "str";
     }
 
     @GetMapping("/get-largest-aiport")
@@ -101,10 +101,11 @@ public class AirportController {
     @PostMapping("/add-flight")
     public String addFlight(@RequestBody Flight flight){
 
-        airportService.addFlight(flight);
+
+        String str = airportService.addFlight(flight);
 
         //Return a "SUCCESS" message string after adding a flight.
-       return "SUCCESS";
+       return "str";
     }
 
 

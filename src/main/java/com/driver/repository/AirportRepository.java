@@ -16,8 +16,12 @@ public class AirportRepository {
     private Map<Integer, Passenger> passengerMap = new HashMap<>(); // passId : Passenger object
     private Map<Integer, List<Integer>> ticketDB = new HashMap<>(); // ticketID : listof passengerId
 
-    public void addAirport(Airport airport) {
-        airportMap.put(airport.getAirportName(),airport);
+    public String addAirport(Airport airport) {
+        if(!airportMap.containsKey(airport.getAirportName())){
+            airportMap.put(airport.getAirportName(),airport);
+            return "SUCCESS";
+        }
+        return null;
     }
 
     public Map<String,Airport> getLargestAirportName() {
@@ -29,10 +33,12 @@ public class AirportRepository {
         return new HashMap<>(flightMap);
     }
 
-    public void addFlight(Flight flight) {
+    public String addFlight(Flight flight) {
         if(!flightMap.containsKey(flight.getFlightId())){
             flightMap.put(flight.getFlightId(),flight);
+            return "SUCCESS";
         }
+        else return null;
     }
 
     public void addPassenger(Passenger passenger) {
