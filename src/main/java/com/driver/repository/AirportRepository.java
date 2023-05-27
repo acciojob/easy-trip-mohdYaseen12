@@ -21,7 +21,7 @@ public class AirportRepository {
             airportMap.put(airport.getAirportName(),airport);
             return "SUCCESS";
         }
-        return null;
+        return "FAILURE";
     }
 
     public Map<String,Airport> getLargestAirportName() {
@@ -38,7 +38,7 @@ public class AirportRepository {
             flightMap.put(flight.getFlightId(),flight);
             return "SUCCESS";
         }
-        else return null;
+        else return "FAILURE";
     }
 
     public void addPassenger(Passenger passenger) {
